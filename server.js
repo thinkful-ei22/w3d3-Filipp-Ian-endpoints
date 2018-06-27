@@ -25,8 +25,16 @@ ShoppingList.create('beans', 2);
 ShoppingList.create('tomatoes', 3);
 ShoppingList.create('peppers', 4);
 
+const {Recipes} = require('./models');
+Recipes.create('chocolate milk', ['cocoa', 'milk', 'sugar']);
+
 // when the root of this route is called with GET, return
 // all current ShoppingList items by calling `ShoppingList.get()`
+app.get('/recipes' , (req, res) => {
+  res.json(Recipes.get());
+})
+
+
 app.get('/shopping-list', (req, res) => {
   res.json(ShoppingList.get());
 });
